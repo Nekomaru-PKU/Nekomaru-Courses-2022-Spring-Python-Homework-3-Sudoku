@@ -1,0 +1,32 @@
+.sudoku-container {
+    font-size: calc(min(6vh, 6vw));
+}
+
+.sudoku-outer-row,
+.sudoku-inner-row {
+    display: flex;
+}
+
+.sudoku-outer-col {
+    background-color: #BBDEFB;
+
+    margin: 0.05em;
+    border: none;
+    border-radius: 0.3em;
+    padding: 0.1em;
+}
+
+.sudoku-input {
+    font-family: inherit;
+    font-size: inherit;
+    text-align: center;
+
+    color: #FFFFFF;
+    background-color: #90CAF9;
+
+    height: calc(min(7vh, 7vw));
+    width: calc(min(7vh, 7vw)*0.95);
+    margin: 0.05em;
+    border: none;
+    border-radius: 0.2em;
+}
