@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sudoku - Nekomaru(at)pku.edu.cn</title>
+    <link rel="stylesheet" href="/static/index.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <h1 class="title">Sudoku</h1>
+    <p class="author">Nekomaru(at)1800013040</p>
+    <a class="button" href="soudoku-design.html">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24" width="24">
+            <path fill="#FFFFFF" d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z" />
+        </svg>
+        <span>Design</span></a>
+    <a class="button button-disabled">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24" width="24">
+            <path fill="#FFFFFF" d="M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.41,0-8-3.59-8-8s3.59-8,8-8s8,3.59,8,8 S16.41,20,12,20z M9.5,16.5l7-4.5l-7-4.5V16.5z" />
+        </svg>
+        <span>Play</span></a>
+    <p id="status" class="text text-disabled"><span id="design-count">0</span> games available.</p>
+    <script>
+        $.get("/api/get-design-count").then(data => {
+            if (Number(data)) {
+                $(".button-disabled")
+                    .addClass("button-ready")
+                    .removeClass("button-disabled")
+                    .attr('href', "soudoku-play.html")
+                $(".text-disabled")
+                    .addClass("text-ready")
+                    .removeClass("text-disabled");
+            }
+            $("#design-count").text(data);
+        });
+    </script>
+</body>
+</html>

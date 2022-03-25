@@ -1,0 +1,84 @@
+body {
+    font-family: Ubuntu, sans-serif;
+
+    background-color: #E3F2FD;
+
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    margin: 0.1em;
+    color: #2196F3;
+    font-size: 3em;
+}
+
+.author {
+    margin-top: 0.1em;
+    margin-bottom: 1.5em;
+    color: #90A4AE;
+    font-size: 0.85em;
+}
+
+.text {
+    font-size: 0.85em;
+    margin: 0.3em;
+    color: #1E88E5;
+}
+
+.text-disabled {
+    color: #90A4AE;
+}
+
+.text-ready {
+    color: #66BB6A;
+}
+
+.button {
+    font-size: 1.5rem;
+    text-decoration: none;
+
+    background-color: #2196F3;
+    color: #FFFFFF;
+
+    padding: 0.1em 0.3em;
+    margin: 0.1em;
+    border-radius: 1em;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 1px 1px 5px #607D8B;
+}
+
+.button span {
+    width: 3.6em;
+    padding-left: 0.2em;
+}
+
+.button svg path {
+    fill: #FFFFFF;
+}
+
+.button-ready {
+    background-color: #66BB6A;
+}
+
+.button-disabled {
+    background-color: #90A4AE;
+    color: #ECEFF1;
+    cursor: not-allowed;
+}
+
+.button-disabled svg path {
+    fill: #ECEFF1;
+}
