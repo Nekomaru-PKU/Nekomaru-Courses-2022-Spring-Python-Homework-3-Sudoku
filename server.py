@@ -1,9 +1,16 @@
-import random;
-import flask;
+import random, os, flask;
 
-app = flask.Flask(__name__, static_url_path='/static');
+DESIGNS_FILENAME = "designs.txt"
 
 designs = []
+if not os.path.exists(DESIGNS_FILENAME):
+    with open(DESIGNS_FILENAME, "w") as f:
+        pass
+else:
+    with open(DESIGNS_FILENAME, 'r') as f:
+        designs = f.readlines()
+
+app = flask.Flask(__name__, static_url_path='/static');
 
 @app.route("/")
 @app.route("/index.html")
@@ -28,6 +35,8 @@ def api_get_design():
 @app.route("/api/add-design")
 def api_add_design():
     designs.append(flask.request.args.get("design"));
+    with open(DESIGNS_FILENAME, "w") as f:
+        f.writelines(map(lambda o: o + '\n', designs))
     return "OK";
 
 if __name__=="__main__":
