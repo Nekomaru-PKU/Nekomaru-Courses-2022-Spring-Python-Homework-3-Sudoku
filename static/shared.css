@@ -1,15 +1,57 @@
 body {
     font-family: Ubuntu, sans-serif;
-
+    font-size: calc(min(4vh, 4vw));
     background-color: #E3F2FD;
 
-    margin: 0;
-    height: 100vh;
     width: 100vw;
+    height: 100vh;
+    margin: 0;
     overflow: hidden;
+}
 
+body, header, main, footer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.button {
+    color: #FFFFFF;
+    font-size: 1.2em;
+    text-decoration: none;
+
+    background-color: #2196F3;
+    border-radius: 1em;
+    box-shadow: 1px 1px 5px #607D8B;
+    cursor: pointer;
+
+    padding: 0.1em 0.6em 0.1em 0.3em;
+    margin: 0.15em;
+    display: flex;
+    align-items: center;
+}
+
+.button span {
+    width: 4em;
+    text-align: center;
+}
+
+.button svg path {
+    fill: #FFFFFF;
+}
+
+.button-ready {
+    background-color: #66BB6A;
+}
+
+.button-disabled {
+    background-color: #90A4AE;
+    color: #ECEFF1;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.button-disabled svg path {
+    fill: #ECEFF1;
 }
