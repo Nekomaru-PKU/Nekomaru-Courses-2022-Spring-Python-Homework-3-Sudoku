@@ -6,6 +6,9 @@ app = flask.Flask(__name__, static_url_path='/static');
 @app.route("/index.html")
 def index():
     return app.send_static_file("index.html")
+@app.route("/success.html")
+def success():
+    return app.send_static_file("success.html")
 @app.route("/sudoku-design.html")
 def sudoku_design():
     return app.send_static_file("sudoku-design.html")
