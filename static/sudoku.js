@@ -8,11 +8,16 @@ const colors = {
     okay: "#90CAF9",
     err0: "#F8BBD0",
     err1: "#F06292",
+    none: "#BBDEFB",
 }
 
 const onSudokuChanged = () => {
-    for (let i of range3) for (let j of range3) for (let k of range3) for (let l of range3)
-        $(`#sudoku-${i}-${j}-${k}-${l}`)[0].style.backgroundColor = colors.okay;
+    for (let i of range3) for (let j of range3)
+    for (let k of range3) for (let l of range3)
+        $(`#sudoku-${i}-${j}-${k}-${l}`)[0].style.backgroundColor =
+            sudoku.design[i][j][k][l]
+                ? colors.none
+                : colors.okay;
     const err = [];
     for (let i of range3) for (let k of range3) {
         let okay = true;
@@ -77,7 +82,13 @@ const initSudoku = () => {
                 ).join('') + "</div>"
             ).join('') + "</div>"
         ).join(''));
-    for (let i of range3) for (let j of range3) for (let k of range3) for (let l of range3) {
+    for (let i of range3) for (let j of range3)
+    for (let k of range3) for (let l of range3) {
+        if (sudoku.design[i][j][k][l]) {
+            const element = $(`#sudoku-${i}-${j}-${k}-${l}`)[0];
+            element.value = sudoku.design[i][j][k][l];
+            element.style.backgroundColor = colors.none;
+        }
         $(`#sudoku-${i}-${j}-${k}-${l}`)[0].oninput = ev => {
             if (sudoku.design[i][j][k][l])
                 ev.target.value = sudoku.design[i][j][k][l];

@@ -15,7 +15,10 @@ def sudoku_play():
 
 @app.route("/api/get-design-count")
 def api_get_design_count():
-    return "0";
+    return "1";
+@app.route("/api/get-design")
+def api_get_design():
+    return "700000000006750209004090000400002090080000020050800003000010500103048600000000001";
 
 if __name__=="__main__":
 	app.run(
