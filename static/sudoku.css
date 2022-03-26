@@ -1,3 +1,13 @@
+.topbar {
+    width: calc(min(80vh, 80vw));
+    margin: 0.3em;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+footer   { margin: 0.3em; color: #90A4AE; font-size: 0.8em; }
+footer p { margin: 0.1em; }
+
 .sudoku-container {
     font-size: calc(min(6vh, 6vw));
 }

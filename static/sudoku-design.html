@@ -15,10 +15,40 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-    <div id="sudoku" class="sudoku-container"></div>
+    <header class="topbar">
+        <a class="button" href="/">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="1em" width="1em">
+                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+            </svg>
+            <span>Back</span>
+        </a>
+        <a id="save" class="button button-ready">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="1em" width="1em">
+                <path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm2 16H5V5h11.17L19 7.83V19zm-7-7c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zM6 6h9v4H6z" />
+            </svg>
+            <span>Save</span>
+        </a>
+    </header>
+    <main id="sudoku" class="sudoku-container"></main>
+    <footer>
+        <p id="author">Nekomaru(at)pku.edu.cn</p>
+        <p id="license">
+            Licensed under GPLv3 on <a href="https://github.com/PKU-Nekomaru/Nekomaru-Courses-2022-Spring-Python-Homework-3-Sudoku">GitHub</a>
+        </p>
+    </footer>
     <script src="/static/sudoku.js"></script>
     <script>
         initSudoku();
+
+        $('#save').click(() => {
+            if (! sudoku.isOkay) return;
+        });
+
+        sudoku.onUpdated = () => {
+            $('#save')
+                .toggleClass('button-disabled', ! sudoku.isOkay)
+                .toggleClass('button-ready'   ,   sudoku.isOkay);
+        }
     </script>
 </body>
 </html>

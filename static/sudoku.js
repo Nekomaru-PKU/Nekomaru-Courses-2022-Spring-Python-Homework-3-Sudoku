@@ -1,6 +1,7 @@
 const range3 = [0, 1, 2];
 const sudoku = {
-    data: range3.map(i => range3.map(j => range3.map(k => range3.map(l => 0)))),
+    design: range3.map(i => range3.map(j => range3.map(k => range3.map(l => 0)))),
+    isOkay: true,
     onUpdated: () => {},
 };
 const colors = {
@@ -60,7 +61,8 @@ const onSudokuChanged = () => {
     }
     for (let [i, j, k, l] of err)
         $(`#sudoku-${i}-${j}-${k}-${l}`)[0].style.backgroundColor = colors.err1;
-    sudoku.onUpdated(err.length == 0);
+    sudoku.isOkay = err.length == 0;
+    sudoku.onUpdated();
 }
 
 const initSudoku = () => {
@@ -77,8 +79,8 @@ const initSudoku = () => {
         ).join(''));
     for (let i of range3) for (let j of range3) for (let k of range3) for (let l of range3) {
         $(`#sudoku-${i}-${j}-${k}-${l}`)[0].oninput = ev => {
-            if (sudoku.data[i][j][k][l])
-                ev.target.value = sudoku.data[i][j][k][l];
+            if (sudoku.design[i][j][k][l])
+                ev.target.value = sudoku.design[i][j][k][l];
             else {
                 const value = ev.target.value;
                 const valueLastCharCode = value.charCodeAt(value.length - 1);
