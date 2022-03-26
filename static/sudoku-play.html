@@ -57,6 +57,14 @@
         })
 
         sudoku.onUpdated = () => {
+            if (sudoku.isOkay) {
+                let success = true;
+                for (let i of range3) for (let j of range3)
+                for (let k of range3) for (let l of range3)
+                    success &&= $(`#sudoku-${i}-${j}-${k}-${l}`)[0].value;
+                if (success)
+                    window.location.href = "/success.html";
+            }
         }
     </script>
 </body>
