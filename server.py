@@ -1,6 +1,9 @@
+import random;
 import flask;
 
 app = flask.Flask(__name__, static_url_path='/static');
+
+designs = []
 
 @app.route("/")
 @app.route("/index.html")
@@ -18,10 +21,14 @@ def sudoku_play():
 
 @app.route("/api/get-design-count")
 def api_get_design_count():
-    return "1";
+    return str(len(designs));
 @app.route("/api/get-design")
 def api_get_design():
-    return "700000000006750209004090000400002090080000020050800003000010500103048600000000001";
+    return designs[random.randint(0, len(designs) - 1)];
+@app.route("/api/add-design")
+def api_add_design():
+    designs.append(flask.request.args.get("design"));
+    return "OK";
 
 if __name__=="__main__":
 	app.run(

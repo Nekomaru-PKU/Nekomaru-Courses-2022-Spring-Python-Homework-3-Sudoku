@@ -40,15 +40,22 @@
     <script>
         initSudoku();
 
-        $('#save').click(() => {
-            if (! sudoku.isOkay) return;
-        });
-
         sudoku.onUpdated = () => {
             $('#save')
                 .toggleClass('button-disabled', ! sudoku.isOkay)
                 .toggleClass('button-ready'   ,   sudoku.isOkay);
         }
+
+        $('#save').click(() => {
+            if (! sudoku.isOkay) return;
+            $.get("/api/add-design?design=" + range3.map(
+                i => range3.map(
+                j => range3.map(
+                k => range3.map(
+                l => $(`#sudoku-${i}-${j}-${k}-${l}`)[0].value || '0'
+                ).join('')).join('')).join('')).join(''))
+            window.location.href = '/';
+        });
     </script>
 </body>
 </html>

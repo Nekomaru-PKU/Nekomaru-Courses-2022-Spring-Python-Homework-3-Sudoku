@@ -14,10 +14,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <style>
-        header  { margin: 0.2em; flex-direction: column; }
-        main    { margin: 0.2em; }
-        .title  { margin: 0.1em; color: #2196F3; font-size: 3em;   }
-        .status { margin: 0.3em; color: #90A4AE; font-size: 0.8em; }
+        header { margin: 0.2em; flex-direction: column; }
+        main   { margin: 0.2em; }
+        .title { margin: 0.1em; color: #2196F3; font-size: 3em;   }
+        .text  { margin: 0.3em; color: #90A4AE; font-size: 0.8em; }
     </style>
 </head>
 <body>
@@ -35,7 +35,7 @@
             </svg>
             <span>Play</span>
         </a>
-        <p id="status" class="status text-disabled"><span id="design-count">0</span> games available.</p>
+        <p id="status" class="text"><span id="design-count">0</span> designs available.</p>
     </main>
     <footer>
         <p id="author">Nekomaru(at)pku.edu.cn</p>
@@ -45,13 +45,13 @@
     </footer>
     <script>
         $.get("/api/get-design-count").then(data => {
+            $("#design-count").text(data);
             if (Number(data)) {
                 $("#play")
                     .toggleClass("button-disabled", false)
                     .toggleClass("button-ready"   , true)
                 $("#status").css('color', "#66BB6A");
             }
-            $("#design-count").text(data);
         });
     </script>
 </body>
